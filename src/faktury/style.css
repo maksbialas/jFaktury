@@ -1,0 +1,17 @@
+.background {
+    -fx-background-color: #eee;
+}
+
+#invContainer {
+    -fx-background-color: #fff;
+    -fx-border-color: #25B4A5;
+    -fx-border-style: solid none none none;
+    -fx-border-width: 10;
+}
+
+.invBreakBar {
+    -fx-border-color: #fff;
+    -fx-border-width: 0 0 0 1;
+    -fx-padding: 0 15 0 15;
+    -fx-background-color:  #1192A7;
+}

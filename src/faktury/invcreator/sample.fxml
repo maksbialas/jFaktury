@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" stylesheets="@../style.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="faktury.invcreator.Controller">
+    <columnConstraints>
+        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+      <ColumnConstraints />
+      <ColumnConstraints />
+      <ColumnConstraints />
+      <ColumnConstraints />
+      <ColumnConstraints />
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints maxHeight="100.0" minHeight="10.0" prefHeight="100.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="800.0" minHeight="720.0" prefHeight="800.0" />
+    </rowConstraints>
+    <children>
+      <MenuBar style="-fx-background-color: #fff;">
+        <menus>
+          <Menu mnemonicParsing="false" text="Podmioty">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#defaultSeller" text="Domyślny sprzedawca" />
+                  <MenuItem mnemonicParsing="false" onAction="#addBuyer" text="Dodaj nabywce" />
+                  <MenuItem mnemonicParsing="false" onAction="#deleteBuyer" text="Usuń nabywce" />
+            </items>
+          </Menu>
+            <Menu mnemonicParsing="false" text="Opcje">
+              <items>
+                <MenuItem mnemonicParsing="false" onAction="#subjectRefresh" text="Odśwież" />
+              </items>
+            </Menu>
+        </menus>
+      </MenuBar>
+      <ScrollPane GridPane.rowIndex="1">
+         <content>
+              <VBox alignment="TOP_CENTER" onMouseClicked="#subjectRefresh" styleClass="background">
+               <children>
+                  <VBox fx:id="invContainer" spacing="40.0">
+                     <children>
+                        <TextField fx:id="invTitle" promptText="Tytuł" text="Faktura">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </TextField>
+                        <GridPane hgap="20.0" vgap="10.0">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <Label text="Sprzedawca">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                                 <GridPane.margin>
+                                    <Insets bottom="10.0" />
+                                 </GridPane.margin>
+                              </Label>
+                              <Label text="Nabywca" GridPane.columnIndex="1">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                                 <GridPane.margin>
+                                    <Insets bottom="10.0" />
+                                 </GridPane.margin>
+                              </Label>
+                              <HBox prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="1">
+                                 <children>
+                                    <Label text="Nazwa" />
+                                    <Region HBox.hgrow="ALWAYS" />
+                                    <TextField fx:id="sName" />
+                                 </children>
+                              </HBox>
+                              <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                 <children>
+                                    <Label text="Nazwa" />
+                                    <Region HBox.hgrow="ALWAYS" />
+                                    <ChoiceBox fx:id="bName" onMouseClicked="#subjectRefresh" prefWidth="170.0" />
+                                 </children>
+                              </HBox>
+                              <HBox prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="2">
+                                 <children>
+                                    <Label text="Email" />
+                                    <Region HBox.hgrow="ALWAYS" />
+                                    <TextField fx:id="sMail" />
+                                 </children>
+                              </HBox>
+                              <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                 <children>
+                                    <Label text="Email" />
+                                    <Region HBox.hgrow="ALWAYS" />
+                                    <TextField fx:id="bMail" />
+                                 </children>
+                              </HBox>
+                              <HBox prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="3">
+                                 <children>
+                                    <Label text="Adres" />
+                                    <Region HBox.hgrow="ALWAYS" />
+                                    <TextField fx:id="sAddress" />
+                                 </children>
+                              </HBox>
+                              <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                 <children>
+                                    <Label text="Adres" />
+                                    <Region HBox.hgrow="ALWAYS" />
+                                    <TextField fx:id="bAddress" />
+                                 </children>
+                              </HBox>
+                              <HBox prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="4">
+                                 <children>
+                                    <Label text="NIP" />
+                                    <Region HBox.hgrow="ALWAYS" />
+                                    <TextField fx:id="sNip" />
+                                 </children>
+                              </HBox>
+                              <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                                 <children>
+                                    <Label text="NIP" />
+                                    <Region HBox.hgrow="ALWAYS" />
+                                    <TextField fx:id="bNip" />
+                                 </children>
+                              </HBox>
+                              <HBox prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="5">
+                                 <children>
+                                    <Label text="Telefon" />
+                                    <Region HBox.hgrow="ALWAYS" />
+                                    <TextField fx:id="sTel" />
+                                 </children>
+                              </HBox>
+                              <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                                 <children>
+                                    <Label text="Telefon" />
+                                    <Region HBox.hgrow="ALWAYS" />
+                                    <TextField fx:id="bTel" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </GridPane>
+                        <GridPane fx:id="productTable" vgap="10.0">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="110" minWidth="10.0" prefWidth="40" />
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="270" minWidth="10.0" prefWidth="270" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="220" minWidth="10.0" prefWidth="110" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="135" minWidth="10.0" prefWidth="110" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="150" minWidth="10.0" prefWidth="110" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="100" minWidth="10.0" prefWidth="50" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="100.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" styleClass="invBreakBar" />
+                              <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" styleClass="invBreakBar" GridPane.columnIndex="1">
+                                 <children>
+                                    <Label prefHeight="30.0" text="Opis" textFill="WHITE" />
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" styleClass="invBreakBar" GridPane.columnIndex="2">
+                                 <children>
+                                    <Label text="Cena" textFill="WHITE" />
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" styleClass="invBreakBar" GridPane.columnIndex="3">
+                                 <children>
+                                    <Label text="Ilość" textFill="WHITE" />
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" styleClass="invBreakBar" GridPane.columnIndex="4">
+                                 <children>
+                                    <Label text="Suma" textFill="WHITE" />
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" styleClass="invBreakBar" GridPane.columnIndex="5">
+                                 <children>
+                                    <Label text="Pod." textFill="WHITE" />
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="1">
+                                 <children>
+                                    <Label text="Pod." textFill="WHITE" />
+                                 </children>
+                              </HBox>
+                              <HBox alignment="BOTTOM_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                 <children>
+                                    <TextField fx:id="pName" promptText="Nazwa produktu" HBox.hgrow="ALWAYS" />
+                                 </children>
+                              </HBox>
+                              <HBox alignment="BOTTOM_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                                 <children>
+                                    <TextField fx:id="pPrice" promptText="0,00" />
+                                 </children>
+                                 <padding>
+                                    <Insets left="30.0" />
+                                 </padding>
+                              </HBox>
+                              <HBox alignment="BOTTOM_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                                 <children>
+                                    <TextField fx:id="pQnt" promptText="0" />
+                                 </children>
+                                 <padding>
+                                    <Insets left="60.0" />
+                                 </padding>
+                              </HBox>
+                              <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="5" GridPane.rowIndex="1">
+                                 <children>
+                                    <CheckBox alignment="CENTER" mnemonicParsing="false" />
+                                 </children>
+                              </HBox>
+                              <HBox alignment="BOTTOM_LEFT" prefWidth="200.0" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2">
+                                 <children>
+                                    <TextField fx:id="pDesc" alignment="TOP_LEFT" prefHeight="100.0" promptText="Opis produktu" HBox.hgrow="ALWAYS" />
+                                 </children>
+                              </HBox>
+                              <Button fx:id="addingButton" mnemonicParsing="false" onAction="#addProduct" text="+" GridPane.rowIndex="3" />
+                           </children>
+                        </GridPane>
+                        <HBox alignment="TOP_RIGHT">
+                           <children>
+                              <Button mnemonicParsing="false" onAction="#invGenerate" text="Generuj" />
+                           </children>
+                        </HBox>
+                     </children>
+                     <padding>
+                        <Insets left="60.0" right="60.0" top="40.0" />
+                     </padding>
+                  </VBox>
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <padding>
+                  <Insets left="200.0" right="200.0" top="60.0" />
+               </padding>
+              </VBox>
+         </content>
+      </ScrollPane>
+    </children>
+</GridPane>
